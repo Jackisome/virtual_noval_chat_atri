@@ -1,3 +1,10 @@
+<center><big><b>视觉小说对话机器人设计</b></big></center>
+<center>小组：旦复旦</center>
+
+# 项目成员
+
+邓勇军 复旦大学
+
 # 应用功能
 
 《亚托莉-我挚爱的时光》是2020年发售的一款视觉小说游戏，描述了在海平面上升淹没大片土地、威胁人类生存的未来世界里，主人公斑鸠夏生因事故失去右腿，与神白水菜萌重逢。搬到海边小镇后，他发现机器人少女亚托莉，她声称与夏生仅有45天相处。在共同生活中，夏生对亚托莉产生情感，却发现她的情感仅是计算出来的假象，令他痛苦不堪。亚托莉的过去揭开：拥有“心”的她，曾为诗菜殉情、为夏生受伤。冲突升级，涉及创作者安田的复仇计划。游戏结局各异，最终夏生和亚托莉在特殊岛屿相聚，诉说情感，诺亚都市的未来充满期待。
@@ -15,11 +22,19 @@
 
 ![image-20240502171843246](C:\Users\happy\AppData\Roaming\Typora\typora-user-images\image-20240502171843246.png)
 
+# 设备
+
+CPU: Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz * 12
+
+GPU: Nvidia A100 32GB
+
+内存 90G
+
 ## 模型训练
 
 1. 模型微调
 
-下载共情对话数据集，编写python程序，将语料转换成Alpaca格式。基于intel_extension_for_transformers所提供的微调方式，使用该数据集，采用Lora技术，对Llama-2-7b-hf进行微调，重新训练其中400多万，约6%的可调参数权重，得到模型empathy_finetune_llama_2_hf。此处微调的目的，是提高模型在对话过程中，对玩家输入所体现情感的共情能力。
+下载共情对话数据集，编写python程序，使用translate包进行语料的英译中，并转换成Alpaca格式。基于intel_extension_for_transformers所提供的微调方式，使用该数据集，采用Lora技术，对Llama-2-7b-hf中，'k_proj', 'q_proj', 'o_proj', 'v_proj'模块进行微调，对1600多万，约0.24%的参数进行训练，得到模型empathy_finetune_llama_2_hf。训练过程对参数进行fp16量化。此处微调的目的，是提高模型在对话过程中，对玩家输入所体现情感的共情能力。
 
 ## 模型推理
 
@@ -33,7 +48,11 @@
 
 3. 量化加速
 
-在推理过程中，通过intel_extension_for_transformers所提供的optimization_config，设置了4bits量化，提高玩家对话过程中的响应速度。
+在训练过程中，通过intel_extension_for_transformers所提供的optimization_config，尝试进行TRN 4bits量化，提高玩家对话过程中的响应速度。但量化未生效。采取默认配置时，平均延迟大约 1.82 秒
+
+对话截图如下，chatbot能获取游戏情节相关内容，并进行一定程度上的同理对话：
+
+![image-20240518215712900](C:\Users\happy\AppData\Roaming\Typora\typora-user-images\image-20240518215712900.png)
 
 # 项目和引用链接
 
