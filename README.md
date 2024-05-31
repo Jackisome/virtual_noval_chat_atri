@@ -1,6 +1,6 @@
-<center><big><b>视觉小说对话机器人设计</b></big></center>
+# 视觉小说对话机器人设计
 
-# 应用功能
+## 应用功能                     
 
 《亚托莉-我挚爱的时光》是2020年发售的一款视觉小说游戏，描述了在海平面上升淹没大片土地、威胁人类生存的未来世界里，主人公斑鸠夏生因事故失去右腿，与神白水菜萌重逢。搬到海边小镇后，他发现机器人少女亚托莉，她声称与夏生仅有45天相处。在共同生活中，夏生对亚托莉产生情感，却发现她的情感仅是计算出来的假象，令他痛苦不堪。亚托莉的过去揭开：拥有“心”的她，曾为诗菜殉情、为夏生受伤。冲突升级，涉及创作者安田的复仇计划。游戏结局各异，最终夏生和亚托莉在特殊岛屿相聚，诉说情感，诺亚都市的未来充满期待。
 
@@ -8,16 +8,16 @@
 
 本项目所使用的技术具有通用性，方便扩展到更多的故事情节中，供具有不同喜好的玩家自行选择所扮演的角色，以及对话对象。
 
-# 技术特点
+## 技术特点
 
 + 共情能力提升：基于Lora，使用情感对话系统所关联的公开数据集，提取对话中的问答内容，整理成Alpaca格式数据集，对Llama-2-7b-hf模型进行微调
 + 故事剧情感知：通过RAG，使用游戏汉化组所公开的游戏剧情文本作为检索文档，通过bce-embedding-base_v1向量化之后，在推理过程中，提升chatbot所返回结果与故事的关联性，使对话更符合游戏世界观与人物设定
 
-# 功能设计
+## 功能设计
 
 ![image-20240502171843246](C:\Users\happy\AppData\Roaming\Typora\typora-user-images\image-20240502171843246.png)
 
-# 设备
+## 设备
 
 CPU: Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz * 12
 
@@ -49,15 +49,15 @@ GPU: Nvidia A100 32GB
 
 ![image-20240518215712900](C:\Users\happy\AppData\Roaming\Typora\typora-user-images\image-20240518215712900.png)
 
-# 项目和引用链接
+## 项目和引用链接
 
-## 项目文档及数据
+### 项目文档及数据                                
 
 1. 项目源码（数据转换、训练及推理源码）：https://github.com/Jackisome/virtual_noval_chat_atri
 2. 微调之后的模型empathy_finetune_llama_2_hf：https://modelscope.cn/models/adafny123/empathy_finetune_llama_2_hf/summary
 3. 微调使用的共情语料，及故事情节文本：https://modelscope.cn/datasets/adafny123/visual_noval_atri/summary
 
-## 引用模型及数据
+### 引用模型及数据  
 
 1. 共情对话数据集：https://github.com/thu-coai/Emotional-Support-Conversation
 2. Llama-2-7b-hf：https://modelscope.cn/models/shakechen/Llama-2-7b-hf/summary
