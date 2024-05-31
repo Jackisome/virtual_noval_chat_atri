@@ -1,9 +1,4 @@
 <center><big><b>视觉小说对话机器人设计</b></big></center>
-<center>小组：旦复旦</center>
-
-# 项目成员
-
-邓勇军 复旦大学
 
 # 应用功能
 
